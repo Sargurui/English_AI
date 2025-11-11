@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { HashRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { UserProvider, useUser } from './context/UserContext';
 import Setup from './pages/Setup';
 import Dashboard from './pages/Dashboard';
@@ -33,7 +33,7 @@ function SetupRoute({ children }) {
 
 function App() {
   return (
-    <Router basename="/English_AI">
+    <Router>
       <UserProvider>
         <Routes>
           <Route 
