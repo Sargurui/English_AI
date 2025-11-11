@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>English AI Practice - Redirecting...</title>
+  <script>
+    // Store the path and redirect to home with hash
+    (function() {
+      const path = window.location.pathname.replace('/English_AI', '') || '/';
+      const hashPath = '/English_AI/#' + path;
+      sessionStorage.setItem('redirect', hashPath);
+      window.location.replace('/English_AI/');
+    })();
+  </script>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: system-ui, -apple-system, sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      background: #0f172a;
+      color: #f1f5f9;
+    }
+    .loader {
+      text-align: center;
+    }
+    .spinner {
+      border: 3px solid rgba(255, 255, 255, 0.1);
+      border-top-color: #6366f1;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      animation: spin 1s linear infinite;
+      margin: 0 auto 20px;
+    }
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+  </style>
+</head>
+<body>
+  <div class="loader">
+    <div class="spinner"></div>
+    <p>Redirecting to English AI Practice...</p>
+  </div>
+</body>
+</html>
+

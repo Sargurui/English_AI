@@ -27,6 +27,18 @@
     <meta name="apple-mobile-web-app-title" content="English AI" />
     
     <title>English AI Practice - Learn English with AI</title>
+    
+    <!-- GitHub Pages HashRouter fix -->
+    <script>
+      // Check if we're on GitHub Pages and redirect to hash-based URL if needed
+      (function() {
+        const redirect = sessionStorage.getItem('redirect');
+        if (redirect) {
+          sessionStorage.removeItem('redirect');
+          window.location.replace(redirect);
+        }
+      })();
+    </script>
     <script type="module" crossorigin src="/English_AI/assets/index-ByQERnUW.js"></script>
     <link rel="stylesheet" crossorigin href="/English_AI/assets/index-nkgOS424.css">
   </head>
