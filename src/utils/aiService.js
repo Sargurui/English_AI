@@ -88,7 +88,7 @@ async function sendToGroq(message, apiKey, systemPrompt, nativeLanguage) {
       'Authorization': `Bearer ${apiKey}`,
     },
     body: JSON.stringify({
-      model: 'mixtral-8x7b-32768',
+      model: 'openai/gpt-oss-20b',
       messages: messages,
       temperature: 0.7,
       max_tokens: 1024,
