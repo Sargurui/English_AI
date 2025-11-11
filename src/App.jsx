@@ -14,7 +14,24 @@ function ProtectedRoute({ children }) {
   const { user, loading } = useUser();
   
   if (loading) {
-    return null; // or a loading spinner
+    return (
+      <div style={{ 
+        display: 'flex', 
+        alignItems: 'center', 
+        justifyContent: 'center', 
+        minHeight: '100vh',
+        background: '#0f172a'
+      }}>
+        <div style={{
+          width: '40px',
+          height: '40px',
+          border: '3px solid rgba(99, 102, 241, 0.2)',
+          borderTop: '3px solid #6366f1',
+          borderRadius: '50%',
+          animation: 'spin 1s linear infinite'
+        }}></div>
+      </div>
+    );
   }
   
   return user ? children : <Navigate to="/setup" replace />;
@@ -24,7 +41,24 @@ function SetupRoute({ children }) {
   const { user, loading } = useUser();
   
   if (loading) {
-    return null;
+    return (
+      <div style={{ 
+        display: 'flex', 
+        alignItems: 'center', 
+        justifyContent: 'center', 
+        minHeight: '100vh',
+        background: '#0f172a'
+      }}>
+        <div style={{
+          width: '40px',
+          height: '40px',
+          border: '3px solid rgba(99, 102, 241, 0.2)',
+          borderTop: '3px solid #6366f1',
+          borderRadius: '50%',
+          animation: 'spin 1s linear infinite'
+        }}></div>
+      </div>
+    );
   }
   
   // If user is already logged in, redirect to home
