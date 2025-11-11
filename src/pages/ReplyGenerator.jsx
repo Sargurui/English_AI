@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { useUser } from '../context/UserContext';
 import Layout from '../components/Layout';
 import { sendMessageToAI } from '../utils/aiService';
@@ -13,6 +13,17 @@ function ReplyGenerator() {
   const [isProcessing, setIsProcessing] = useState(false);
   const [error, setError] = useState('');
   const [showOptions, setShowOptions] = useState(false);
+  const resultRef = useRef(null);
+
+  // Scroll to result when reply is generated
+  useEffect(() => {
+    if (generatedReply && resultRef.current) {
+      resultRef.current.scrollIntoView({ 
+        behavior: 'smooth', 
+        block: 'start'
+      });
+    }
+  }, [generatedReply]);
 
   const tones = [
     { id: 'formal', label: 'Formal', icon: '👔', description: 'Professional and polite' },
@@ -227,7 +238,7 @@ Generate ONLY the reply message, nothing else. No explanations, no labels, just 
 
           {/* Generated Reply Section */}
           {generatedReply && (
-            <div className="result-section">
+            <div className="result-section" ref={resultRef}>
               <div className="result-header">
                 <h3>Generated Reply:</h3>
                 <div className="result-meta">

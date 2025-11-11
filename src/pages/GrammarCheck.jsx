@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { useUser } from '../context/UserContext';
 import Layout from '../components/Layout';
 import { sendMessageToAI, SYSTEM_PROMPTS } from '../utils/aiService';
@@ -10,6 +10,17 @@ function GrammarCheck() {
   const [corrections, setCorrections] = useState([]);
   const [isProcessing, setIsProcessing] = useState(false);
   const [error, setError] = useState('');
+  const resultRef = useRef(null);
+
+  // Scroll to result when new correction is added
+  useEffect(() => {
+    if (corrections.length > 0 && resultRef.current) {
+      resultRef.current.scrollIntoView({ 
+        behavior: 'smooth', 
+        block: 'start'
+      });
+    }
+  }, [corrections]);
 
   // Function to clean and format the AI response
   const cleanResponse = (text) => {
@@ -183,7 +194,11 @@ function GrammarCheck() {
                 </div>
               ) : (
                 corrections.map((correction, index) => (
-                  <div key={index} className="correction-card">
+                  <div 
+                    key={index} 
+                    className="correction-card"
+                    ref={index === 0 ? resultRef : null}
+                  >
                     <div className="correction-label">Original:</div>
                     <div className="correction-original">
                       {correction.original}

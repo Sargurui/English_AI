@@ -1,6 +1,7 @@
 import React from 'react';
 import { HashRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { UserProvider, useUser } from './context/UserContext';
+import ScrollToTop from './components/ScrollToTop';
 import Setup from './pages/Setup';
 import Dashboard from './pages/Dashboard';
 import Settings from './pages/Settings';
@@ -68,6 +69,7 @@ function SetupRoute({ children }) {
 function App() {
   return (
     <Router>
+      <ScrollToTop />
       <UserProvider>
         <Routes>
           <Route 
